@@ -15,8 +15,7 @@ window.onscroll = () => {
         };
     });
 };
-    
-    
+
     // Gestión del menú de navegación y efectos de desplazamiento
     const menuIcon = document.querySelector('#menu-icon');
     const navbar = document.querySelector('nav');
