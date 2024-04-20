@@ -4,10 +4,136 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>La Casa del cafe</title>
 </head>
 <body>
-    <h2>La Casa Del Café - Tienda Online</h2>
+    <header>
+            
+        <a href="#"class="logo">La Casa Del Café</a>
+        <i class='bx bx-menu' id="menu-icon"></i>
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#nuestro-cafe">Nuestro Café</a>
+            <a href="#shop">Shop</a>
+        </nav>
+        <div id="cart-icon">
+            <i class='bx bxs-cart'></i>           
+<span id="cart-counter">0</span>
+        </div>
+    </header>
+    
+    <section id="inicio"><div class="carousel">
+        
+        <i class="prev fa-solid fa-arrow-left"></i>
+        <img src="img/cover1.png">
+        <img src="img/cover8.png">
+        <img src="img/cover2.png">
+        <img src="img/cover5.png">
+        <img src="img/cover3.png">
+        <img src="img/cover6.png">
+        <img src="img/cover4.png">
+        <img src="img/cover7.png">
+
+        <i class="next fa-solid fa-arrow-right"></i>
+        <div class="carousel-indicators"></div>
+    </div>
+</section>
+
+
+
+    <section id="nuestro-cafe">
+        <div class="carousel-cafe">
+            <div class="product-cafe">
+            <h5>Café Tostado</h4>
+            <img src="./img/cafe1.png" alt="Product 1">
+            <div></div>
+                <p>Despierta tus sentidos con nuestro café tostado. Desde suaves hasta intensos, encuentra tu sabor ideal en cada sorbo. ¡Descubre una experiencia única en cada taza!</p>
+            </div>
+            <div class="product-cafe">
+            <h5>Café Fino</h5>
+            <img src="./img/cafe2.png" alt="Product 2">
+            <p>
+                Explora el deleite del café fino en cada taza. Con granos seleccionados y tostados con precisión, ofrecemos una experiencia de sabor excepcional. </p>
+            </div>
+            <div class="product-cafe">
+            <h5>Café Medio</h5>
+            <img src="./img/cafe3.png" alt="Product 3">
+            <p>Explora el equilibrio perfecto del café medio en cada sorbo. Con granos seleccionados y tostados con precisión, te ofrecemos una experiencia equilibrada y deliciosa.</p>
+            </div>
+            <div class="product-cafe">
+            <h5>Café Grueso</h5>
+            <img src="./img/cafe4.png" alt="Product 4">
+            <p>
+                Experimenta la robustez del café grueso en cada taza. Con granos seleccionados y tostados con dedicación, perfecto para despertar tus sentidos cada mañana.</p>
+            </div>
+            <div class="product-cafe">
+            <h5>Café Organico</h5>
+            <img src="./img/cafe5.png" alt="Product 5">
+            <p>Descubre el café orgánico, cultivado en armonía con la naturaleza y cuidado con cariño desde el campo hasta tu taza, ofrecemos una experiencia pura y auténtica en cada sorbo. </p>
+            </div>
+        </div>
+        <button-cafe id="prevBtn">
+            <i class='bx bx-chevron-left'></i>
+        </button-cafe>
+        <button-cafe id="nextBtn">
+            <i class='bx bx-chevron-right'></i>
+        </button-cafe>
+        </div>
+    </section>
+
+    <section id="shop">
+        <div id="products"></div>
+<div id="cart" class="hidden">
+    <button id="close-cart">
+        <i class='bx bx-x'></i>
+    </button>
+    <h2>Carrito</h2>
+    <ul id="cart-items"></ul>
+    <div id="total-price">Total: $0</div>
+    <button id="checkout">Eliminar todo</button>  <button id="buy-button">Comprar</button>
+    
+    <div id="popup" class="popup-container hidden">
+        <div class="popup-content">
+            <button id="close-popup">
+                <i class='bx bx-x'></i>
+            </button>
+            <h2>Detalles de la compra</h2>
+            <form id="purchase-form">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required><br><br>
+                <label for="address">Dirección:</label>
+                <input type="text" id="address" name="address" required><br><br>
+                <label for="payment-type">Tipo de Tarjeta:</label>
+                <select id="payment-type" name="payment-type" required>
+                    <option value="">Selecciona un tipo de tarjeta</option>
+                    <option value="credito">Crédito</option>
+                    <option value="debito">Débito</option>
+                    <option value="paypal">PayPal</option>
+                </select><br><br>
+                <div id="card-details" class="hidden">
+                    <label for="bank">Banco:</label>
+                    <input type="text" id="bank" name="bank" required><br><br>
+                    <label for="card-number">Número de Tarjeta:</label>
+                    <input type="text" id="card-number" name="card-number" required><br><br>
+                    <label for="security-code">Código de Seguridad:</label>
+                    <input type="text" id="security-code" name="security-code" required><br><br>
+                </div>
+                <button type="submit">Confirmar Compra</button>
+            </form>
+        </div>
+    </div>
+    
+    <div id="confirmation-popup" class="popup-container hidden">
+        <div class="popup-content">
+            <button id="close-confirmation-popup"><i class='bx bx-x'></i></button>
+            <h2>¡Gracias por su compra!</h2>
+            <p>Vuelva pronto.</p>
+        </div>
+    </div>
+    
+</div>
+</section>
 
     <script src="./js/main.js"></script>
 </body>
