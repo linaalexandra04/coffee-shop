@@ -170,58 +170,63 @@ window.onscroll = () => {
         }
     });
 
-    // Event listener para eliminar todos los productos del carrito al hacer clic en "Pagar"
-    checkoutButton.addEventListener('click', () => {
-        removeAllFromCart();
-    });
+// Event listener para eliminar todos los productos del carrito al hacer clic en "Pagar"
+checkoutButton.addEventListener('click', () => {
+    removeAllFromCart();
+});
 
-    //pop-up de compra
-    buyButton.addEventListener('click', () => {
-        popup.classList.remove('hidden');
-    });
+//pop-up de compra
+buyButton.addEventListener('click', () => {
+    popup.classList.remove('hidden');
+});
 
-    closePopupButton.addEventListener('click', () => {
-        popup.classList.add('hidden');
-    });
+closePopupButton.addEventListener('click', () => {
+    popup.classList.add('hidden');
+});
 
-    paymentTypeSelect.addEventListener('change', () => {
-        if (paymentTypeSelect.value === 'paypal') {
-            cardDetailsContainer.classList.add('hidden');
-        } else {
-            cardDetailsContainer.classList.remove('hidden');
-        }
-    });
+paymentTypeSelect.addEventListener('change', () => {
+    if (paymentTypeSelect.value === 'paypal') {
+        cardDetailsContainer.classList.add('hidden');
+    } else {
+        cardDetailsContainer.classList.remove('hidden');
+    }
+});
 
-    purchaseForm.addEventListener('submit', event => {
-        event.preventDefault();
-        const name = document.getElementById('name').value;
-        const address = document.getElementById('address').value;
-        const paymentType = document.getElementById('payment-type').value;
-        let paymentDetails = {};
+purchaseForm.addEventListener('submit', event => {
+    event.preventDefault();
+    const name = document.getElementById('name').value;
+    const address = document.getElementById('address').value;
+    const paymentType = document.getElementById('payment-type').value;
+    let paymentDetails = {};
 
-        if (paymentType !== 'paypal') {
-            const bank = document.getElementById('bank').value;
-            const cardNumber = document.getElementById('card-number').value;
-            const securityCode = document.getElementById('security-code').value;
-            paymentDetails = { bank, cardNumber, securityCode };
-        }
+    // Obtener detalles de pago independientemente del método de pago seleccionado
+    const bank = document.getElementById('bank').value;
+    const cardNumber = document.getElementById('card-number').value;
+    const securityCode = document.getElementById('security-code').value;
+    paymentDetails = { bank, cardNumber, securityCode };
 
-        console.log("Nombre:", name);
-        console.log("Dirección:", address);
-        console.log("Tipo de Tarjeta:", paymentType);
-        console.log("Detalles de Pago:", paymentDetails);
+    console.log("Nombre:", name);
+    console.log("Dirección:", address);
+    console.log("Tipo de Tarjeta:", paymentType);
+    console.log("Detalles de Pago:", paymentDetails);
 
-        popup.classList.add('hidden');
-        confirmationPopup.classList.remove('hidden');
-    });
+    popup.classList.add('hidden');
+    confirmationPopup.classList.remove('hidden');
 
-    closeConfirmationPopupButton.addEventListener('click', () => {
-        confirmationPopup.classList.add('hidden');
-    });
+    // Vaciar el carrito después de confirmar la compra
+    removeAllFromCart();
+});
 
-    // Inicializar la casa del café "ecommerce"
-    renderProducts();
-    loadCartFromLocalStorage();
+
+
+
+closeConfirmationPopupButton.addEventListener('click', () => {
+    confirmationPopup.classList.add('hidden');
+});
+
+// Inicializar la casa del café "ecommerce"
+renderProducts();
+loadCartFromLocalStorage();
 
     // Carrusel de productos
     const carousel = document.querySelector('.carousel-cafe');
@@ -297,3 +302,30 @@ const updateIndicators = () => {
 };
 
 updateIndicators();
+
+//pop-up footer
+document.addEventListener('DOMContentLoaded', function() {
+    // Obtener todos los enlaces que abren pop-ups
+    var popupLinks = document.querySelectorAll('.link-popup');
+
+    // Agregar un evento de clic a cada enlace
+    popupLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            var popupId = this.getAttribute('data-popup');
+            var popup = document.getElementById(popupId);
+            popup.style.display = 'block';
+        });
+    });
+
+    // Obtener todos los botones para cerrar pop-ups
+    var closeButtons = document.querySelectorAll('.close-popup-custom');
+
+    // Agregar un evento de clic a cada botón para cerrar pop-ups
+    closeButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            var popup = this.closest('.popup-container-custom');
+            popup.style.display = 'none';
+        });
+    });
+});
